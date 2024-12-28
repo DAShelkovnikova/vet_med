@@ -1,0 +1,26 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% load my_tags %}
+<div class="row">
+    <div class="col my-3">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+             src="{{ category.photo | media_filter }}">
+        <h2 class="fw-normal">{{ category.name }}</h2>
+        <h2 class="lead">{{ category.description }}</h2>
+        <p><a class="btn btn-secondary" href="{% url 'catalog:category_list' %}">Назад</a></p>
+    </div><!-- /.col-lg-4 -->
+</div><!-- /.row -->
+<div class="row">
+    {% for product in products %}
+    <div class="col-12 my-3 bg-primary-subtle p-3">
+        <div> №{{ product.pk }}</div>
+    <a href="{% url 'catalog:product_detail' product.id %}" class="link-underline link-underline-opacity-0 h4 d-block">{{ product.name|linebreaksbr }}</a>
+    <p>{{ product.description|linebreaksbr }}</p>
+        <hr>
+    <p><b>Ограничения:</b> {{ product.restrictions|linebreaksbr }}</p>
+    <p><b>Медицинские показания:</b> {{ product.medical_indications|linebreaksbr }}</p>
+    <div><span class="badge rounded-pill text-bg-light">Цена: {{ product.price }} рублей</span></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

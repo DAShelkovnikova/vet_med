@@ -1,0 +1,83 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% load static %}
+{% load my_tags %}
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">ВЕТПОМОЩЬ</h2>
+        <p class="lead"><b>Ветпомощь –</b> круглосуточная ветеринарная клиника. Наши врачи готовы помочь вашему
+            питомцу в любое время суток. </p>
+        <p class="lead"><b>Здоровье вашего пушистого члена семьи в надежных руках!</b></p>
+
+    </div>
+    <div class="col-md-5">
+        <img src="{% static 'img/1.jpg' %}" class="bd-placeholder-img featurette-img"/>
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Преимущества нашей клиники</h2>
+        <p class="lead"><b>Доступность:</b> Мы открыты 24 часа. Удобный подъезд. Бесплатная парковка. Адекватные
+            цены.</p>
+        <p class="lead"><b>Качество:</b> Мы используем только качественные проверенные материалы. В нашей команде
+            только лучшие врачи высокой квалификации .</p>
+        <p class="lead"><b>Удобство:</b> Записать питомца на прием можно как по телефону, так и через личный кабинет.
+            .</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img src="{% static 'img/2.png' %}" class="bd-placeholder-img featurette-img"/>
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="pricing-header px-3 py-3 pt-md-2 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Наши врачи</h1>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="250" height="300" src="{% static 'img/3.jpg' %}">
+        <h2 class="fw-normal">Бернард Лауриц Фредерик Банг</h2>
+        <p class="lead">Эпизоотолог</p>
+        <p><a class="btn btn-info" href="{% url 'catalog:account_list' %}">Записаться</a></p>
+    </div><!-- /.col-lg-4 -->
+
+    <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="250" height="250" src="{% static 'img/1.jpg' %}">
+        <h2 class="fw-normal">Луи Дж. Камути</h2>
+        <p class="lead">Кошачий доктор</p>
+        <p><a class="btn btn-info" href="{% url 'catalog:account_list' %}">Записаться</a></p>
+    </div><!-- /.col-lg-4 -->
+
+    <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="250" height="300" src="{% static 'img/4.jpg' %}">
+        <h2 class="fw-normal">Роберт Кук</h2>
+        <p class="lead">Лошадиный доктор</p>
+        <p><a class="btn btn-info" href="{% url 'catalog:account_list' %}">Записаться</a></p>
+    </div><!-- /.col-lg-4 -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="300" height="300" src="{% static 'img/5.jpg' %}">
+        <h2 class="fw-normal">Доктор Айболит</h2>
+        <p class="lead">Врач широкого профиля</p>
+        <p><a class="btn btn-info" href="{% url 'catalog:account_list' %}">Записаться</a></p>
+    </div><!-- /.col-lg-4 -->
+
+    <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="300" height="300" src="{% static 'img/6.jpg' %}">
+        <h2 class="fw-normal">Доктор Дулитл</h2>
+        <p class="lead">Понимает язык животных</p>
+        <p><a class="btn btn-info" href="{% url 'catalog:account_list' %}">Записаться</a></p>
+    </div><!-- /.col-lg-4 -->
+
+
+</div><!-- /.row -->
+{% endblock %}

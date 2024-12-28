@@ -1,0 +1,63 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% load my_tags %}
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7">
+       <h2 class="featurette-heading fw-normal lh-1">Все необходимое для вашего питомца</h2>
+                <p class="lead">Корма</p>
+                <p class="lead">Витамины</p>
+                <p class="lead">Ветпрепараты</p>
+                <p class="lead">Амуниция</p>
+                <p class="lead">Игрушки</p>
+                <p class="lead">Одежда</p>
+                <p class="lead">Аксессуары</p>
+                <p class="lead">и многое другое.</p>
+                <a type="button" class="btn btn-info" href="{% url 'catalog:contacts' %}">Узнать о наличии и
+                    заказать</a>
+    </div>
+    <div class="col-md-5">
+        <img src="{{ home.photo | media_filter }}">
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+         <h2 class="featurette-heading fw-normal lh-1">Услуги клиники</h2>
+                <p class="lead">Лабораторная диагностика</p>
+                <p class="lead">МРТ</p>
+                <p class="lead">КТ</p>
+                <p class="lead">Рентген</p>
+                <p class="lead">Хирургия</p>
+                <p class="lead">Банк крови</p>
+                <p class="lead">Вакцинация</p>
+                <p class="lead">УЗИ</p>
+                <p class="lead">Функциональная диагностика.</p>
+                <a type="button" class="btn btn-info" href="{% url 'catalog:account_list' %}">Записаться</a>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img src="{{ home.photo | media_filter }}">
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Стационар</h2>
+                <p class="lead">В нашей клинике работает стационар, вы можете оставить питомца под наблюдением
+                    врачей до полного его выздоровления.</p>
+                <p class="lead">Внимательный персонал. Учет всех потребностей вашего любимца (соседи, освещенность,
+                    вкусняшки, прогулки и тд.).</p>
+        <button type="button" class="btn btn-info">Позвонить</button>
+    </div>
+    <div class="col-md-5">
+        <img src="{{ home.photo | media_filter }}">
+    </div>
+</div>
+
+<hr class="featurette-divider">
+{% endblock %}

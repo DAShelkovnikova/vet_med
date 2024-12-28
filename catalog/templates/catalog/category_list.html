@@ -1,0 +1,14 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% load my_tags %}
+<div class="row">
+    {% for category in object_list %}
+    <div class="col-lg-4 my-3 position-relative">
+                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{{ category.photo | media_filter }}">
+        <h2 class="fw-normal">{{ category.name }}</h2>
+        <p class="lead">{{ category.description }}</p>
+        <p><a class="btn btn-info" href="{% url 'catalog:category_detail' category.pk %}">Узнать больше</a></p>
+    </div><!-- /.col-lg-4 -->
+    {% endfor %}
+</div><!-- /.row -->
+{% endblock %}

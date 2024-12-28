@@ -1,0 +1,168 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% load my_tags %}
+
+<div class="row">
+    <div class="col-lg-4 my-3 position-relative">
+        <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+            <nav class="nav nav-pills flex-column">
+                <a class="nav-link" href="#Запись на прием">Запись на прием</a>
+                <a class="nav-link" href="#История записей">История записей</a>
+            </nav>
+        </nav>
+    </div>
+
+    <div class="col-8 my-3 position-relative">
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
+             class="scrollspy-example-2" tabindex="0">
+
+            <span class="placeholder col-12 bg-primary"></span>
+
+            <div id="Запись на прием">
+                <h4>Запись на прием</h4>
+                <div class="col-md-5">
+                    <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                        <form method="post" action="/create_appointment">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="name" class="form-label">Имя</label>
+                                    <input type="text" class="form-control" id="name"
+                                           placeholder="Введите ваше имя" value="" required>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="surname" class="form-label">Фамилия</label>
+                                    <input type="text" class="form-control" id="surname"
+                                           placeholder="Введите вашу фамилию" value="" required>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="phone" class="form-label">Телефон</label>
+                                    <input type="text" class="form-control" id="phone"
+                                           placeholder="Введите ваш номер телефона" value="" required>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email"
+                                           placeholder="Введите ваш email" value=""
+                                           required>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="appointment" class="form-label">Услуга</label>
+                                    <input type="text" class="form-control" id="appointment"
+                                           placeholder="Введите услугу на которую хотите записать питомца" value=""
+                                           required>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="appointment_date" class="form-label">Дата</label>
+                                    <input type="date" class="form-control" id="appointment_date"
+                                           placeholder="Введите услугу на которую хотите записать питомца" value=""
+                                           required>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="appointment_time" class="form-label">Время</label>
+                                    <input type="time" class="form-control" id="appointment_time"
+                                           placeholder="Введите услугу на которую хотите записать питомца" value=""
+                                           required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Записаться</button>
+                        </form>
+                    </div>
+                </div>
+
+                <span class="placeholder col-12 bg-primary"></span>
+
+                <div id="История записей">
+                    <h4>История записей и результаты диагностик</h4>
+                    <p>
+                    <div class="col-md-12">
+                        <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                            <div class="container">
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading1">
+                                            <button class="accordion-button" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapse1"
+                                                    aria-expanded="false" aria-controls="collapse1">
+                                                Запись № 1
+                                            </button>
+                                        </h2>
+                                        <div id="collapse1" class="accordion-collapse collapse show"
+                                             aria-labelledby="heading1" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <table class="table table-white table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Услуга</th>
+                                                        <th>Цена</th>
+                                                        <th>Дата</th>
+                                                        <th>Время</th>
+                                                        <th>Результат</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="table table-primary table-hover">
+                                                    <tr>
+                                                        <td><a class="text-dark">Первая вакцинация</a></td>
+                                                        <td>2500 рублей</td>
+                                                        <td>13.08.2024</td>
+                                                        <td>13:00</td>
+                                                        <td>Вакцина мультикан</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="d-flex justify-content-between">
+                                                    <p><strong>Итого:</strong></p>
+                                                    <p><strong>2500 рублей</strong></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading2">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapse2"
+                                                    aria-expanded="false" aria-controls="collapse2">
+                                                Запись № 2
+                                            </button>
+                                        </h2>
+                                        <div id="collapse2" class="accordion-collapse collapse"
+                                             aria-labelledby="heading2" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <table class="table table-white table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Услуга</th>
+                                                        <th>Цена</th>
+                                                        <th>Дата</th>
+                                                        <th>Время</th>
+                                                        <th>Результат</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="table table-primary table-hover">
+                                                    <tr>
+                                                        <td><a class="text-dark">УЗИ</a></td>
+                                                        <td>500 рублей</td>
+                                                        <td>13.09.2024</td>
+                                                        <td>15:30</td>
+                                                        <td>УЗИ брюшной полости для исключения наличия инородного
+                                                            тела в кишечнике.</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                 <div class="d-flex justify-content-between">
+                                                    <p><strong>Итого:</strong></p>
+                                                    <p><strong>500 рублей</strong></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

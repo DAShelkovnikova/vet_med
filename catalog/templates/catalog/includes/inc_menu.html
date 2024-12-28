@@ -1,0 +1,45 @@
+<nav class="navbar bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'catalog:category_list' %}">ВЕТПОМОЩЬ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'catalog:category_list' %}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'catalog:contacts' %}">Контакты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-disabled="true" href="{% url 'catalog:company_list' %}">О компании</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <form action="{% url 'users:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="nav-link active" type="submit">Выход</button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-disabled="true" href="{% url 'catalog:account_list' %}">Личный кабинет</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-disabled="true" href="{% url 'users:login' %}">Вход</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-disabled="true" href="{% url 'users:register' %}">Регистрация</a>
+                </li>
+                {% endif %}
+            </ul>
+<!--            <form class="d-flex" role="search" method="get" action="{% url 'catalog:search' %}">-->
+<!--                 {% csrf_token %}-->
+<!--                <input class="btn btn-light me-2" type="search" placeholder="Поиск на сайте" aria-label="Search" name="q">-->
+<!--                <button class="btn btn-outline-light" type="submit">Поиск</button>-->
+<!--            </form>-->
+        </div>
+    </div>
+</nav>

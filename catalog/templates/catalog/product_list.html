@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% load my_tags %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="col-12 md-5">
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">{{ product.name }}</p>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text">Цена: {{ product.price }}</p>
+                        <p class="card-text">Ограничения: {{ product.restrictions }}</p>
+                        <p class="card-text">Медицинские показания: {{ product.medical_indications }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
