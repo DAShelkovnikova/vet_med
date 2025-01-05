@@ -15,11 +15,6 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
 
 
-# @admin.register(Home)
-# class HomeAdmin(admin.ModelAdmin):
-#     list_display = ("name",)
-
-
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
@@ -27,4 +22,4 @@ class CompanyAdmin(admin.ModelAdmin):
 
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ("name", "surname", 'appointment')
+    list_display = ("name", "surname")

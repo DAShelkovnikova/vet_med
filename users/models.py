@@ -2,6 +2,9 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
+NULLABLE = {"blank": True, "null": True}
+
+
 class User(AbstractUser):
     username = None
     email = models.EmailField(
@@ -11,14 +14,11 @@ class User(AbstractUser):
     phone = models.CharField(
         max_length=35,
         verbose_name="Phone",
-        blank=True,
-        null=True,
         help_text="Введите номер телефона",
+        **NULLABLE
     )
 
-    token = models.CharField(
-        max_length=100, verbose_name="token", blank=True, null=True
-    )
+    token = models.CharField(max_length=100, verbose_name="token", **NULLABLE)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

@@ -1,0 +1,39 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <form class="row" method="post" enctype="multipart/form-data">
+            <div class="col-6">
+                <div class="card">
+
+                    {% if object %}
+                    <p class="card-text">Редактирование продукта</p>
+                        {% else %}
+                    <p class="card-text">Записаться</p>
+                        {% endif %}<div class="card-body">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        {% if object %}
+                            Редактировать
+                        {% else %}
+                            Записаться
+                        {% endif %}
+                    </button>
+                </div>
+            </div>
+            <div class="col-6">
+
+                        {{ formset.management_form }}
+                        {% for form in formset.forms %}
+                        {{ form.as_p }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

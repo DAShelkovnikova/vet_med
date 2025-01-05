@@ -1,11 +1,8 @@
-
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, TemplateView
 
+from appointment.models import Appointment
 from catalog.models import Category, Product, Company, Account
-
-
-
 
 
 class ContactsView(TemplateView):
@@ -54,7 +51,10 @@ class CompanyListView(ListView):
 
 
 class AccountListView(ListView):
-    model = Account
+    model = Appointment
+    template_name = "catalog/account_list.html"
 
-
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["appointments"] = Appointment.objects.all()  # Передаем все записи
+        return context

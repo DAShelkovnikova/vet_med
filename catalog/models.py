@@ -1,6 +1,9 @@
 from django.db import models
 
 
+NULLABLE = {"blank": True, "null": True}
+
+
 class Category(models.Model):
     name = models.CharField(
         max_length=150,
@@ -10,15 +13,13 @@ class Category(models.Model):
     description = models.TextField(
         verbose_name="Описание категории",
         help_text="Введите описание категории",
-        blank=True,
-        null=True,
+        **NULLABLE
     )
     photo = models.ImageField(
         upload_to="product/photo",
-        blank=True,
-        null=True,
         verbose_name="Изображение",
         help_text="Загрузите фото категории",
+        **NULLABLE
     )
 
     class Meta:
@@ -38,32 +39,28 @@ class Product(models.Model):
     description = models.TextField(
         verbose_name="Описание продукта",
         help_text="Введите описание продукта",
-        blank=True,
-        null=True,
+        **NULLABLE
     )
     price = models.IntegerField(
-        blank=True, null=True, verbose_name="Цена", help_text="Укажите цену за покупку"
+        verbose_name="Цена", help_text="Укажите цену за покупку", **NULLABLE
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
         verbose_name="Категория",
         help_text="Введите категорию",
-        null=True,
-        blank=True,
         related_name="categories",
+        **NULLABLE
     )
     restrictions = models.TextField(
         verbose_name="Ограничения",
         help_text="Укажите любые ограничения на продукт",
-        blank=True,
-        null=True,
+        **NULLABLE
     )
     medical_indications = models.TextField(
         verbose_name="Медицинские показания",
         help_text="Укажите медицинские показания",
-        blank=True,
-        null=True,
+        **NULLABLE
     )
 
     class Meta:
@@ -84,15 +81,13 @@ class Company(models.Model):
     description = models.TextField(
         verbose_name="Описание компании",
         help_text="Введите описание компании",
-        blank=True,
-        null=True,
+        **NULLABLE
     )
     photo = models.ImageField(
         upload_to="product/photo",
-        blank=True,
-        null=True,
         verbose_name="Изображение",
         help_text="Загрузите фото компании",
+        **NULLABLE
     )
 
     class Meta:
@@ -118,8 +113,7 @@ class Account(models.Model):
         max_length=150,
         verbose_name="Отчество",
         help_text="Введите ваше отчество",
-        blank=True,
-        null=True,
+        **NULLABLE
     )
     email = models.EmailField(
         verbose_name="Email",
@@ -130,17 +124,8 @@ class Account(models.Model):
         verbose_name="Телефон",
         help_text="Введите ваш номер телефона",
     )
-    appointment = models.ForeignKey(
-        Product,
-        on_delete=models.SET_NULL,
-        verbose_name="Запись вашего питомца на прием",
-        help_text="Введите, куда вы хотите записаться",
-        null=True,
-        blank=True,
-    )
-    token = models.CharField(
-        max_length=100, verbose_name="token", blank=True, null=True
-    )
+
+    token = models.CharField(max_length=100, verbose_name="token", **NULLABLE)
 
     class Meta:
         verbose_name = "Аккаунт"
@@ -148,6 +133,3 @@ class Account(models.Model):
 
     def __str__(self):
         return self.name
-
-
-
